@@ -23,7 +23,11 @@ namespace PROG2070_A2_Armando_Interaminense
             length = 1;
         }
 
-        //constructor
+        /// <summary>
+        /// Rectangle Constructor
+        /// </summary>
+        /// <param name="width">width</param>
+        /// <param name="length">length</param>
         public Rectangle(int width, int length)
         {
             this.width = width;

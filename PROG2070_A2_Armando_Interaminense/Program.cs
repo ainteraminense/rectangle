@@ -9,49 +9,106 @@ namespace PROG2070_A2_Armando_Interaminense
 {
     internal class Program
     {
-        static void Main(string[] args)
+        /// <summary>
+        /// Validating a user input if it is an integer greater than 0
+        /// </summary>
+        /// <param name="inputString">input string</param>
+        /// <param name="inputInt">output integer</param>
+        /// <returns>true if is valid or false otherwise</returns>
+        public static bool ValidatingInteger(string inputString, out int inputInt)
         {
-            //Initialize a rectangle object and display properties through methods
-            //Rectangle rect = new Rectangle(2,3);
-            //Console.WriteLine("The length is: {0}cm\nThe width is: {1}cm" +
-            //    "\nThe perimeter is: {2}cm\nThe area is: {3}cm\u00b2",
-            //    rect.GetLength(),rect.GetWidth(),rect.GetPerimeter(),rect.GetArea());
-            //Console.Read();
-
+            if (int.TryParse(inputString, out inputInt))
+            {
+                //validating if user entered integers greater than zero
+                if (inputInt > 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    Console.WriteLine("Error: you must enter integers greater than zero." +
+                        "You entered {0}",
+                        inputInt + "\n-------------------------------------------");
+                    return false;
+                }
+            }
+            else
+            {
+                Console.WriteLine("Error: you must enter integer in a numeric format." +
+                    " You entered {0}",
+                    inputString + "\n-------------------------------------------");
+                return false;
+            }
+        }
+        static void Main(string[] args)
+        { 
             //Declaring variables
-            string lengthString, widthString;
-            int lengthInt, widthInt;
-            bool pass=false;
+            string lengthString, widthString, optionString;
+            int lengthInt, widthInt = 1, optionInt;
+            bool pass = false;
+            Rectangle rect = new Rectangle();
             //The user must input integer greater than zero to escape loop
             do
             {
-                //Asking user for length and width of the rectangle
+                //Asking user for length of the rectangle
                 Console.WriteLine("Please, choose a length for the rectangle");
                 lengthString = Console.ReadLine();
-                Console.WriteLine("Please, choose a width for the rectangle");
-                widthString = Console.ReadLine();
-                //validating if user entered integers
-                if (int.TryParse(lengthString, out lengthInt)&&int.TryParse(widthString, out widthInt))
+                pass = Program.ValidatingInteger(lengthString, out lengthInt);
+                if (pass)
                 {
-                    //validating if user entered integers greater than zero
-                    if (lengthInt > 0 && widthInt > 0)
+                    //Asking user for width of the rectangle
+                    Console.WriteLine("Please, choose a width for the rectangle");
+                    widthString = Console.ReadLine();
+                    pass = Program.ValidatingInteger(widthString, out widthInt);
+                }
+            } while (!pass);
+            rect = new Rectangle(widthInt,lengthInt);
+            //validating if user entered integers
+
+
+            //Present the user with a menu with 7 options
+            do
+            {
+                Console.WriteLine("Please, choose one option from the menu\n" +
+                    "\n1. Get Rectangle Length\n2. Change Rectangle Length\n3. Get Rectangle Width" +
+                    "\n4. Change Rectangle Width\n5. Get Rectangle Perimeter" +
+                    "\n6. Get Rectangle Area\n7. Exit");
+                optionString = Console.ReadLine();
+                //validating if user input is within the range and is valid
+                if (int.TryParse(optionString, out optionInt))
+                {
+                    if (optionInt > 0 && optionInt < 8)
                     {
-                        pass = true;
+                        switch (optionInt)
+                        {
+                            case 1:
+                                Console.WriteLine("The length of the Rectangle is: {0}",
+                                    rect.GetLength());
+                                break;
+                            case 2:
+                                do
+                                {
+                                    Console.WriteLine("Please choose a new value for the rectangle");
+                                    lengthString = Console.ReadLine();
+                                } while (!Program.ValidatingInteger(lengthString, out lengthInt));
+                                rect.SetLength(lengthInt);
+                                break;
+                            default:
+                                break;
+                        }
                     }
                     else
                     {
-                        Console.WriteLine("Error: you must enter integers greater than zero." +
-                            "You entered {0} for the length and {1} for the width",
-                            lengthInt,widthInt+"\n-------------------------------------------");
+                        Console.WriteLine("Error: please choose a valid number within the options below." +
+                            " You entered {0}", optionString + "\n-------------------------------------------");
                     }
                 }
                 else
                 {
-                    Console.WriteLine("Error: you must enter integer in a numeric format." +
-                        " You entered {0} for the length and {1} for the width",
-                        lengthString, widthString + "\n-------------------------------------------");
+                    Console.WriteLine("Error: please choose a valid number. You entered {0}",
+                        optionString + "\n-------------------------------------------");
                 }
-            } while (!pass);
+            } while (optionInt != 7);
         }
     }
 }
