@@ -88,10 +88,32 @@ namespace PROG2070_A2_Armando_Interaminense
                             case 2:
                                 do
                                 {
-                                    Console.WriteLine("Please choose a new value for the rectangle");
+                                    Console.WriteLine("Please choose a new value for the length " +
+                                        "of the rectangle");
                                     lengthString = Console.ReadLine();
                                 } while (!Program.ValidatingInteger(lengthString, out lengthInt));
                                 rect.SetLength(lengthInt);
+                                break;
+                            case 3:
+                                Console.WriteLine("The width of the rectangle is: {0}",
+                                    rect.GetWidth());
+                                break;
+                            case 4:
+                                do
+                                {
+                                    Console.WriteLine("Please choose a new value for the width " +
+                                        "of the rectangle");
+                                    widthString = Console.ReadLine();
+                                } while (!Program.ValidatingInteger(widthString, out widthInt));
+                                rect.SetWidth(widthInt);
+                                break;
+                            case 5:
+                                Console.WriteLine("The perimeter of the rectangle is: {0}",
+                                    rect.GetPerimeter());
+                                break;
+                            case 6:
+                                Console.WriteLine("The area of the rectangle is: {0}",
+                                    rect.GetArea()+"cm\u00b2");
                                 break;
                             default:
                                 break;
