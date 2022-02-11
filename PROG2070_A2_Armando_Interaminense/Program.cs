@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PROG2070_A2_Armando_Interaminense
 {
-    internal class Program
+    public class Program
     {
         /// <summary>
         /// Validating a user input if it is an integer greater than 0

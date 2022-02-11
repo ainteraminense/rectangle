@@ -67,8 +67,5 @@ namespace PROG2070_A2_Armando_Interaminense
         /// </summary>
         /// <returns>The area of the rectangle</returns>
         public int GetArea() { return width*length;}
-
-
-
     }
 }

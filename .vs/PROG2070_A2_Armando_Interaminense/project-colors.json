@@ -15,7 +15,12 @@
       "ProjectGuid": "4baa7835-46ba-4677-a55e-3f100c2618a7",
       "DisplayName": "Solution Items",
       "ColorIndex": 1
+    },
+    "38704f61-edfb-41c6-8916-dc2215bf037a": {
+      "ProjectGuid": "38704f61-edfb-41c6-8916-dc2215bf037a",
+      "DisplayName": "RectangleTest",
+      "ColorIndex": 2
     }
   },
-  "NextColorIndex": 2
+  "NextColorIndex": 3
 }
